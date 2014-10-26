@@ -50,18 +50,13 @@ Tornadoes represent more than 1/3 of all fatalities (37.2%) and nearly 2/3 (65.0
 
 ### Events with the greatest economic consequences
 
-Identifying a single event type with the greatest economic consequences is more challenging.  For the purpose of this analysis, economic impact was defined as the sum of the property and crop damage, though one could make an argument that fatalities and injuries have economic impact as well.  Tornadoes are a contender, with 27.0% of the total damage, but other events also have significant economic impact: Flash Flood and Flood account for 21.8%, and Thunderstorm Wind, Thunderstorm Winds ad Tstm Wind account for 23.3%.  Indeed, with the addition of Hail, which generally occurs in conjunction with thunderstorms, the thunderstorm group accounts for more than one third (33.6%) of all property and crop damage.  A very strong argument can be made for thunderstorms being the event with the largest economic impact.  While further examination of the categories yields many that should be amalgamated into the general "Thunderstorm Wind" category, the vast majority of the tornadoes (and their damage) were entered under a single event type.
+Identifying a single event type with the greatest economic consequences is more challenging.  For the purpose of this analysis, economic impact was defined as the sum of the property and crop damage, though one could make an argument that fatalities and injuries have economic impact as well.  Tornadoes are a contender, with 27.0% of the total damage, but other events also have significant economic impact: Flash Flood and Flood account for 21.8%, and Thunderstorm Wind, Thunderstorm Winds and Tstm Wind account for 23.3%.  Indeed, with the addition of Hail, which generally occurs in conjunction with thunderstorms, the thunderstorm group accounts for more than one third (33.6%) of all property and crop damage.  A very strong argument can be made for thunderstorms being the event with the largest economic impact.  While further examination of the categories yields many that should be amalgamated into the general "Thunderstorm Wind" category, the vast majority of the tornadoes (and their damage) were entered under a single event type.
 
 ```{r}
 sum(econ[, 7])
 tops <- eresults[eresults$Total > 100000,]
+names(tops)[1] <- "Event"
+par(mar = c(5,8,4,1))
 barplot(tops$Total, horiz = T, names.arg = tops$Event, las = 2, cex.names = 0.6, cex.axis = 0.7, xlab = "Total Damage", main = "Economic Impact")
 ```
 
-```
-barplot(tops$Total, horiz = T, names.arg = tops$Event, las = 2, cex.names = 0.6, cex.axis = 0.7, xlab = "Total Damage", main = "Economic Impact")
-dev.copy(png, file = "./figures/EconImpact.png")
-dev.off()
-```
-
-This plot was made, in R, using the code above, however, the code above will not produce the event type labels via knitr.  I include the figure here: 
